@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
-
-
+import Parser from 'math-expression-evaluator'
 
 function CalculatorUI(){
     const [inputNum, setInputNum] = useState(' ');
@@ -9,57 +8,33 @@ function CalculatorUI(){
     function Add(){
         if(inputNum.length===0){
             return;
-        }
-        if(result===0){
-            setResult(parseInt(inputNum));
-            setInputNum('');
         } else {
-            setResult(parseInt(inputNum)+result);
-            setInputNum('');
+            setInputNum(inputNum+'+');
         }
     }
 
     function Minus(){
         if(inputNum.length===0){
             return;
-        }
-        if(result===0){
-            setResult(parseInt(inputNum));
-            setInputNum('');
         } else {
-            setResult(result-parseInt(inputNum));
-            setInputNum('');
+            setInputNum(inputNum+'-');
         }
     }
 
-    function Multiply(){
+    function Multiply(){     
         if(inputNum.length===0){
             return;
-        }
-        if(result===0){
-            setResult(parseInt(inputNum));
-            setInputNum('');
         } else {
-            setResult(result*parseInt(inputNum));
-            setInputNum('');
-        }
+            setInputNum(inputNum+'*');
+        }    
     }
 
     function Divide(){
         if(inputNum.length===0){
             return;
-        }
-        if(result===0){
-            setResult(parseInt(inputNum));
-            setInputNum('');
         } else {
-            if(parseInt(inputNum)!==0){
-                setResult(result/parseInt(inputNum));
-            } else {
-                setResult(0);
-            }
-            setInputNum('');
-        }
+            setInputNum(inputNum+'/');
+        }    
     }
 
     function NumClick(props){
@@ -72,7 +47,7 @@ function CalculatorUI(){
     }
 
     function GetResult(){
-
+        setResult(Parser.eval(inputNum));
     }
 
 
