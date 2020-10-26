@@ -9,7 +9,7 @@ function CalculatorUI(){
         if(inputNum.length===0){
             return;
         } else {
-            setInputNum(inputNum+'+');
+            InsertOperator('+');
         }
     }
 
@@ -17,7 +17,7 @@ function CalculatorUI(){
         if(inputNum.length===0){
             return;
         } else {
-            setInputNum(inputNum+'-');
+            InsertOperator('-');
         }
     }
 
@@ -25,7 +25,7 @@ function CalculatorUI(){
         if(inputNum.length===0){
             return;
         } else {
-            setInputNum(inputNum+'*');
+            InsertOperator('*');
         }    
     }
 
@@ -33,8 +33,19 @@ function CalculatorUI(){
         if(inputNum.length===0){
             return;
         } else {
-            setInputNum(inputNum+'/');
+            InsertOperator('/');
         }    
+    }
+
+    function InsertOperator(operator){
+
+        let strLength=inputNum.length;
+            if(!isNaN(inputNum[strLength-1])){
+                setInputNum(inputNum+operator);
+            } else {
+                var tempStr = inputNum.substr(0, strLength-1)+operator;
+                setInputNum(tempStr);
+            }
     }
 
     function NumClick(props){
@@ -54,9 +65,19 @@ function CalculatorUI(){
 
     return (
     <div >
-        <h1>Input:{inputNum}</h1>
-        <h1>Result:{result}</h1>
-    <table class="center">
+       
+    <table class="table">
+        <thead>
+            <tr>
+                <th colspan ='5'>Input: {inputNum}</th>
+            </tr>
+            <tr>
+                <th colspan ='5'>Result: {result}</th>
+            </tr>
+
+        </thead>
+    <tbody>
+
       <tr>
         <td><button class="button" id='btn1'   onClick={()=>NumClick(1)}>1</button></td>
         <td><button class="button" id='btn2'   onClick={()=>NumClick(2)}>2</button></td>
@@ -82,11 +103,13 @@ function CalculatorUI(){
 
       </tr>
       <tr>
-          <td></td>
-          <td><button class="button" id='btn0'   onClick={()=>NumClick(0)}>0</button></td>
-          <td></td>
+          <td><button class="button" id='btn00' onClick={()=>NumClick('00')}>00</button></td>
+          <td><button class="button" id='btn0' onClick={()=>NumClick(0)}>0</button></td>
+          <td><button class="button" id='btn0' onClick={()=>NumClick('.')}>.</button></td>
 
       </tr>
+      </tbody>
+
     </table>
     </div>
     )

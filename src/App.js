@@ -5,7 +5,15 @@ import React from 'react'
 function App() {
   return (
     <div className="App">
-      <CalculatorUI/>
+      <table>
+    <tr>
+      <td> <div/> </td>
+      <td><CalculatorUI/></td>
+      <td>  </td>
+
+    </tr>
+
+      </table>
     </div>
   );
 }

@@ -1,10 +1,12 @@
 .App {
   text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 
 .button {
-  background-color: #fd9400; /* Green */
+  background-color: #fd9400; /* Orange */
   border: none;
   color: white;
   padding: 15px 32px;
@@ -19,4 +21,8 @@
   background-color: #fd9400;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
+}
+
+.table{
+  text-align: center;
 }
